@@ -1,0 +1,9 @@
+FROM cirrusci/flutter:stable
+
+ENV EMULATOR_API_LEVEL=22 ABI="default;armeabi-v7a" EMULATOR_NAME='Nexus_6P_API_28'
+
+RUN sdkmanager "system-images;android-$EMULATOR_API_LEVEL;$ABI"
+
+RUN echo no | avdmanager create avd -n $EMULATOR_NAME -k "system-images;android-$EMULATOR_API_LEVEL;$ABI"
+
+ADD .ci/config.ini $HOME/.android/avd/$EMULATOR_NAME.avd/config.ini

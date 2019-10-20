@@ -1,0 +1,11 @@
+task:
+  name: Test (ARM)
+  container:
+    dockerfile: .ci/Dockerfile.arm
+    cpu: 4
+    memory: 10G
+  pub_cache:
+    folder: ~/.pub-cache
+  test_script:
+    - pub global activate --source path .
+    - cd example; screenshots -c screenshots_android.yaml -v
