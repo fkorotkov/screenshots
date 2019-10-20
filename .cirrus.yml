@@ -7,5 +7,6 @@ task:
   pub_cache:
     folder: ~/.pub-cache
   test_script:
+    - export PATH="$PATH":"$HOME/.pub-cache/bin"
     - pub global activate --source path .
     - cd example; screenshots -c screenshots_android.yaml -v
